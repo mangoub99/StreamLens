@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import reactLogo from './assets/images/react.svg';
 import viteLogo from './assets/images/vite.svg';
 import './App.css';
+import { RoutePaths } from './types/Routes.type';
+import { Link, NavLink } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,7 +24,15 @@ function App() {
       </div>
       <h1>Vite + React + TypeScript</h1>
       <div className='card'>
-        <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '5px' }}>
+          <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
+          <button>
+            <Link to={RoutePaths.HOME}>Go to Home page</Link>
+          </button>
+          <button>
+            <Link to={RoutePaths.ABOUT}>Go to About page</Link>
+          </button>
+        </div>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
