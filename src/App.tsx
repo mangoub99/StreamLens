@@ -3,7 +3,7 @@ import reactLogo from './assets/images/react.svg';
 import viteLogo from './assets/images/vite.svg';
 import './App.css';
 import { RoutePaths } from './types/Routes.type';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,7 +22,7 @@ function App() {
           <img src={reactLogo} className='logo react' alt='React logo' />
         </a>
       </div>
-      <h1>Vite + React + TypeScript</h1>
+      <h1>Vite + React + TS</h1>
       <div className='card'>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '5px' }}>
           <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
