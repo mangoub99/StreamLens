@@ -1,7 +1,7 @@
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import NavLink from './NavLink.tsx';
-import colors from 'src/assets/themes/colors.ts';
+import NavLink from './NavLink';
+import colors from 'src/assets/themes/colors';
 
 const Navbar = () => {
   return (
