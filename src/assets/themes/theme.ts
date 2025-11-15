@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import colors from './colors';
 
 const theme = createTheme({
   palette: {
@@ -16,12 +17,12 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     background: {
-      default: '#5A431C', // Soft Ivory
-      paper: '#F4EDE4', // Pale Sand
+      default: '#5A431C', // Dark Ochre
+      paper: '#FFFFFF', // white
     },
     text: {
-      primary: '#1E1E1E', // Graphite
-      secondary: '#FAF7F2', // Ivory Cream
+      primary: '#FFFFE3', // Soft Ivory
+      secondary: '#1E1E1E', // Graphite
     },
     error: {
       main: '#E85D5D', // Coral Red
@@ -29,17 +30,18 @@ const theme = createTheme({
     success: {
       main: '#2EBFA5', // Teal Green
     },
-    divider: 'rgba(0, 0, 0, 0.08)',
   },
 
   typography: {
     fontFamily: ['Inter', 'sans-serif'].join(','),
-    h1: { fontWeight: 700, fontSize: '2.25rem' },
-    h2: { fontWeight: 600, fontSize: '1.75rem' },
-    h3: { fontWeight: 600, fontSize: '1.5rem' },
-    h4: { fontWeight: 600, fontSize: '1.25rem' },
-    body1: { color: '#FAF7F2', lineHeight: 1.6 },
-    body2: { color: '#FAF7F2', lineHeight: 1.5 },
+    h1: { color: colors.text.primary, fontWeight: 700, fontSize: '2.25rem' },
+    h2: { color: colors.text.primary, fontWeight: 600, fontSize: '1.75rem' },
+    h3: { color: colors.text.primary, fontWeight: 600, fontSize: '1.5rem' },
+    h4: { color: colors.text.primary, fontWeight: 600, fontSize: '1.25rem' },
+    h5: { color: colors.text.primary, fontWeight: 600, fontSize: '1rem' },
+    h6: { color: colors.text.primary, fontWeight: 600, fontSize: '0.75rem' },
+    body1: { color: colors.text.primary, lineHeight: 1.6 },
+    body2: { color: colors.text.primary, lineHeight: 1.5 },
     button: { textTransform: 'none', fontWeight: 600 },
   },
 
@@ -80,7 +82,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 10,
           textTransform: 'none',
           fontWeight: 600,
           padding: '8px 20px',
@@ -101,6 +103,23 @@ const theme = createTheme({
           '&:hover': {
             backgroundColor: '#2F3EA8',
           },
+        },
+      },
+    },
+
+    // Inputs
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          color: '#E2A847',
+        },
+      },
+    },
+
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: '#E2A847',
         },
       },
     },
@@ -146,7 +165,7 @@ const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
+          borderRadius: 10,
           backgroundColor: '#F4EDE4',
           boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.08)',
         },

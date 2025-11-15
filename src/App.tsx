@@ -9,6 +9,8 @@ import theme from './assets/themes/theme';
 import HeroSection from './components/section/HeroSection';
 import Navbar from './components/navbar/Navbar';
 import SectionHeader from './components/section/SectionHeader';
+import Navbar1 from './components/navbar/Navbar1';
+import NavbarOverlay from './components/navbar/NavBarOverlay';
 
 function App() {
   useEffect(() => {
@@ -17,7 +19,9 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      {/*  <Navbar/>
+      <Navbar1 /> */}
+      <NavbarOverlay />
       <HeroSection />
       <SectionHeader
         label='Cinema'

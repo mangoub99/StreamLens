@@ -5,8 +5,8 @@ import colors from 'src/assets/themes/colors';
 
 const Navbar = () => {
   return (
-    <AppBar position='sticky' elevation={0} sx={{ backgroundColor: colors.whiteSmoke, py: 0, width: '100%', borderRadius: 0 }}>
-      <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 2, md: 6 } }}>
+    <AppBar position='sticky' elevation={0} sx={{ zIndex: 3, m: '1rem', backgroundColor: colors.whiteSmoke }}>
+      <Toolbar sx={{ justifyContent: 'space-between', borderRadius: 10 }}>
         {/* Logo */}
         <Typography variant='h6' sx={{ fontWeight: 700, color: 'primary.main', fontFamily: 'Poppins' }}>
           Logo
