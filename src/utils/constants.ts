@@ -1,1 +1,1 @@
-export const navbarHeight = 64;
+export const navbarHeight = '4rem';

@@ -4,8 +4,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import { navbarHeight } from 'src/utils/constants';
+import { useState } from 'react';
+
+const getResponsiveValue = (xsValue: string | number, smValue: string | number, mdValue: string | number) => {
+  return { xs: xsValue ?? '', sm: smValue ?? '', md: mdValue ?? '' };
+};
 
 const NavbarOverlay = () => {
+  const [openMenu, setOpenMenu] = useState(false);
   return (
     <AppBar
       position='fixed'
@@ -20,27 +26,41 @@ const NavbarOverlay = () => {
         backdropFilter: 'blur(6px)',
       }}
     >
-      <Toolbar sx={{ height: navbarHeight }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+      <Toolbar sx={{ height: getResponsiveValue('auto', 'auto', navbarHeight) }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: getResponsiveValue('column-reverse', 'column-reverse', 'row'),
+            alignItems: 'center',
+            justifyContent: getResponsiveValue('space-around', 'space-between', 'space-between'),
+            width: '100%',
+          }}
+        >
           {/* Logo placeholder */}
-          <Typography variant='h4' sx={{ cursor: 'pointer', display: { xs: 'none', md: 'block' } }}>
+          <Typography variant='h4' sx={{ cursor: 'pointer', display: { xs: 'none', sm: 'none', md: 'block' } }}>
             StreamLens
           </Typography>
           {/* nav links (hide on small screens if desired) */}
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
-              <Button variant='text'>{'Movies'}</Button>
-              <Button variant='text'>{'TV Shows'}</Button>
-              <Button variant='text'>{'About'}</Button>
-            </Box>
+
+          <Box
+            sx={{
+              display: getResponsiveValue(openMenu ? 'flex' : 'none', openMenu ? 'flex' : 'none', 'flex'),
+              flexDirection: getResponsiveValue('column', 'column', 'row'),
+            }}
+          >
+            <Button variant='text'>{'Movies'}</Button>
+            <Button variant='text'>{'TV Shows'}</Button>
+            <Button variant='text'>{'About'}</Button>
           </Box>
+
           {/* Right: actions */}
           <Box
             sx={{
               p: '2px 6px',
+              marginTop: getResponsiveValue(openMenu ? '5.5px' : 0, openMenu ? '9.5px' : 0, 0),
               display: 'flex',
               alignItems: 'center',
-              width: { xs: '100%', md: '300px' },
+              width: getResponsiveValue('100%', '300px', '300px'),
               backgroundColor: colors.phantomBlack,
               borderColor: colors.primary.main,
               borderWidth: 1,
@@ -48,7 +68,7 @@ const NavbarOverlay = () => {
               borderRadius: '10px',
             }}
           >
-            <IconButton sx={{ display: { xs: 'flex', md: 'none' }, p: '4px' }} aria-label='menu'>
+            <IconButton aria-label='menu' sx={{ display: { xs: 'flex', md: 'none' }, p: '4px' }} onClick={() => setOpenMenu(prev => !prev)}>
               <MenuIcon color='primary' />
             </IconButton>
 
