@@ -1,27 +1,19 @@
 import './App.css';
-import { useEffect, useState } from 'react';
-import reactLogo from './assets/images/react.svg';
-import viteLogo from './assets/images/vite.svg';
-import { RoutePaths } from './types/Routes.type';
-import { Link } from 'react-router-dom';
-import { CssBaseline, Button, Card, Typography } from '@mui/material';
-import theme from './assets/themes/theme';
+import { useEffect } from 'react';
 import HeroSection from './components/section/HeroSection';
-import Navbar from './components/navbar/Navbar';
 import SectionHeader from './components/section/SectionHeader';
-import Navbar1 from './components/navbar/Navbar1';
-import NavbarOverlay from './components/navbar/NavBarOverlay';
+// import Navbar from './components/navbar/Navbar';
+// import NavBarAlt from './components/navbar/NavBarAlt';
+import NavBar from './components/navbar/NavBar';
 
-function App() {
+const App = () => {
   useEffect(() => {
     console.log('App mounted');
   }, []);
 
   return (
     <>
-      {/*  <Navbar/>
-      <Navbar1 /> */}
-      <NavbarOverlay />
+      <NavBar />
       <HeroSection />
       <SectionHeader
         label='Cinema'
@@ -30,6 +22,6 @@ function App() {
       />
     </>
   );
-}
+};
 
 export default App;
