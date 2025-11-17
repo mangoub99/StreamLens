@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host --port 8000",
     "build": "vite build",
+    "deploy": "vite deploy",
     "preview": "vite preview",
     "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}' --fix",
     "typecheck": "tsc --noEmit",
@@ -44,6 +45,7 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.2",
+    "vite-plugin-gh-pages": "^1.0.1",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.8"
   }
