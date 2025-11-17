@@ -2,9 +2,7 @@ import './App.css';
 import { useEffect } from 'react';
 import HeroSection from './components/section/HeroSection';
 import SectionHeader from './components/section/SectionHeader';
-// import Navbar from './components/navbar/Navbar';
-// import NavBarAlt from './components/navbar/NavBarAlt';
-import NavBar from './components/navbar/NavBar';
+import NavBar from './components/navbar/Navbar';
 
 const App = () => {
   useEffect(() => {
@@ -16,7 +14,7 @@ const App = () => {
       <NavBar />
       <HeroSection />
       <SectionHeader
-        label='Cinema'
+        label='Cinema123'
         title='Latest Releases and Trending Shows'
         subtitle='Discover the most compelling stories from around the world, handpicked for your entertainment.'
       />
