@@ -3,10 +3,12 @@ import { useEffect } from 'react';
 import HeroSection from './components/section/HeroSection';
 import SectionHeader from './components/section/SectionHeader';
 import NavBar from './components/navbar/Navbar';
+import { movieService } from './core/services/movie.service';
 
 const App = () => {
   useEffect(() => {
     console.log('App mounted');
+    // movieService.getMovies({ page: 1 });
   }, []);
 
   return (
