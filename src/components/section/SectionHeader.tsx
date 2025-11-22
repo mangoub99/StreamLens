@@ -1,11 +1,14 @@
 import { Box, Typography } from '@mui/material';
 
-const SectionHeader = ({ label, title, subtitle }) => {
+interface SectionHeaderProps {
+  title: string;
+  subtitle: string;
+}
+
+const SectionHeader = (props: SectionHeaderProps) => {
+  const { title, subtitle } = props;
   return (
     <Box sx={{ textAlign: 'center', my: 8, px: 2 }}>
-      <Typography variant='overline' sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: '1px' }}>
-        {label}
-      </Typography>
       <Typography variant='h4' sx={{ fontWeight: 700, mt: 1, textTransform: 'uppercase' }}>
         {title}
       </Typography>

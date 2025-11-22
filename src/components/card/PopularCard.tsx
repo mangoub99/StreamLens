@@ -1,0 +1,26 @@
+import { Box, Typography } from '@mui/material';
+import { TvShow } from 'src/core/services/tv.service';
+import NoPoster from 'src/assets/images/no-movie.png';
+import { Movie } from 'src/core/services/movie.service';
+
+interface PopularCardProps {
+  item: TvShow & Movie;
+}
+
+const TvCard = (props: PopularCardProps) => {
+  const { item } = props;
+  return (
+    <Box key={item.id} sx={{ width: 200, marginX: theme => theme.spacing(2) }}>
+      <img
+        width={200}
+        src={item.poster_path ? `https://image.tmdb.org/t/p/w200${item.poster_path}` : NoPoster}
+        alt={item.name ?? item.original_title ?? 'Untitled'}
+      />
+      <Typography variant='h6' color='text.primary' textAlign='center' noWrap>
+        {item.name ?? item.original_title ?? 'Untitled'}
+      </Typography>
+    </Box>
+  );
+};
+
+export default TvCard;

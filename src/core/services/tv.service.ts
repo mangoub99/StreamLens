@@ -6,20 +6,26 @@ import { ApiService } from './api.service';
  * Basic TMDB v3 TV result shapes.
  * Expand these interfaces as your UI needs more data.
  */
-export type TvSummary = {
+export type TvShow = {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
   id: number;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  first_air_date: string;
   name: string;
-  overview?: string;
-  poster_path?: string | null;
-  backdrop_path?: string | null;
-  first_air_date?: string;
-  vote_average?: number;
-  genre_ids?: number[];
+  vote_average: number;
+  vote_count: number;
 };
 
 export type TvListResponse = {
   page: number;
-  results: TvSummary[];
+  results: TvShow[];
   total_pages: number;
   total_results: number;
 };

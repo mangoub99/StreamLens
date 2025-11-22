@@ -6,20 +6,26 @@ import { ApiService } from './api.service';
  * Basic TMDB v3 movie result shapes.
  * Expand these interfaces as your UI needs more data.
  */
-export type MovieSummary = {
+export type Movie = {
   id: number;
+  adult: boolean;
+  backdrop_path?: string;
+  genre_ids: number[];
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
   title: string;
-  overview?: string;
-  poster_path?: string | null;
-  backdrop_path?: string | null;
-  release_date?: string;
-  vote_average?: number;
-  genre_ids?: number[];
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
 };
 
 export type MovieListResponse = {
   page: number;
-  results: MovieSummary[];
+  results: Movie[];
   total_pages: number;
   total_results: number;
 };
