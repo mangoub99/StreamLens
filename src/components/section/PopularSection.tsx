@@ -5,6 +5,8 @@ import MovieCard from '../card/Card';
 import TvCard from '../card/PopularCard';
 import PopularCard from '../card/PopularCard';
 import { Movie } from 'src/core/services/movie.service';
+import Grid from '@mui/material/Grid';
+import colors from 'src/assets/themes/colors';
 
 interface PopularTVSectionProps {
   title: string;
@@ -24,13 +26,20 @@ const PopularSection = (props: PopularTVSectionProps) => {
         paddingX: theme => theme.spacing(2),
       }}
     >
-      <Typography sx={{ textAlign: 'center', marginY: theme => theme.spacing(2) }} variant='h1'>
+      <Typography sx={{ textAlign: 'center', marginY: theme => theme.spacing(4) }} variant='h1'>
         {title}
       </Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'row', width: '75%', overflowX: 'scroll' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          width: '75%',
+          overflowX: 'scroll',
+        }}
+      >
         {/* Render popular TV shows here */}
         {data.map((show: TvShow & Movie) => (
-          <PopularCard key={show.id} item={show} />
+          <PopularCard item={show} />
         ))}
       </Box>
     </Box>

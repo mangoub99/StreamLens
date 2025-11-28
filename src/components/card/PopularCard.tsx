@@ -10,8 +10,9 @@ interface PopularCardProps {
 const TvCard = (props: PopularCardProps) => {
   const { item } = props;
   return (
-    <Box key={item.id} sx={{ width: 200, marginX: theme => theme.spacing(2) }}>
+    <Box key={item.id} sx={{ width: 200, margin: theme => theme.spacing(2) }}>
       <img
+        style={{ borderRadius: 10, marginBottom: 8 }}
         width={200}
         src={item.poster_path ? `https://image.tmdb.org/t/p/w200${item.poster_path}` : NoPoster}
         alt={item.name ?? item.original_title ?? 'Untitled'}

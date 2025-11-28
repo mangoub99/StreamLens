@@ -11,10 +11,10 @@ const App = () => {
   const [tvData, setTvData] = useState<any>();
   const [movieData, setMovieData] = useState<any>();
   const fetchData = async () => {
-    const movieResponse = await movieService.getMovies({ page: 1 });
+    const movieResponse = await movieService.getPopularMovie(1);
     // console.log('Movie Response:', movieResponse);
     setMovieData(movieResponse);
-    const tvResponse = await tvService.getTvShows({ page: 1 });
+    const tvResponse = await tvService.getPopularTV(1);
     setTvData(tvResponse);
     // console.log('TV Response:', tvResponse);
   };

@@ -18,7 +18,8 @@ const colors = {
     contrastText: '#ffffff',
   },
   background: {
-    default: '#5A431C', // Dark Ochre
+    default: 'linear-gradient(135deg, #5A431C 0%, #1f0303ff 100%)',
+    // default: 'linear-gradient(135deg, #5A431C 0%, #E2A847 100%)',
     paper: '#FFFFFF', // white
   },
   text: {

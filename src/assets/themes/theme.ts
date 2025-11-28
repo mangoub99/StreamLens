@@ -16,10 +16,10 @@ const theme = createTheme({
       dark: '#2F3EA8',
       contrastText: '#ffffff',
     },
-    background: {
-      default: '#5A431C', // Dark Ochre
-      paper: '#FFFFFF', // white
-    },
+    // background: {
+    //   default: colors.background.default, // Dark Ochre
+    //   paper: '#FFFFFF', // white
+    // },
     text: {
       primary: '#FFFFE3', // Soft Ivory
       secondary: '#1E1E1E', // Graphite
@@ -78,6 +78,31 @@ const theme = createTheme({
   ],
 
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          /* Chrome & Edge */
+          '&::-webkit-scrollbar': {
+            width: '8px',
+            height: '8px',
+          },
+          '&::-webkit-scrollbar-track': {
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: colors.primary.main,
+            borderRadius: '10px',
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            backgroundColor: colors.primary.dark,
+          },
+
+          /* Firefox */
+          scrollbarWidth: 'auto',
+          scrollbarColor: `${colors.primary.main} rgba(255, 255, 255, 0.1)`,
+        },
+      },
+    },
     // 🌟 Buttons
     MuiButton: {
       styleOverrides: {

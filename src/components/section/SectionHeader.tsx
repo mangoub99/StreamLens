@@ -12,7 +12,7 @@ const SectionHeader = (props: SectionHeaderProps) => {
       <Typography variant='h4' sx={{ fontWeight: 700, mt: 1, textTransform: 'uppercase' }}>
         {title}
       </Typography>
-      <Typography variant='body1' sx={{ mt: 2, color: 'text.secondary', maxWidth: '600px', mx: 'auto' }}>
+      <Typography variant='body1' sx={{ mt: 2, maxWidth: '600px', mx: 'auto' }}>
         {subtitle}
       </Typography>
     </Box>
