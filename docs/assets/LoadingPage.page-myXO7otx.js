@@ -1,1 +1,0 @@
-import{j as r}from"./index-DZBUXQnP.js";import{B as t,C as e}from"./Box-DsboMmlc.js";const o=()=>r.jsx(t,{sx:{width:"100%",minHeight:"100vh",display:"flex",justifyContent:"center",alignItems:"center"},children:r.jsx(e,{color:"primary"})});export{o as default};
