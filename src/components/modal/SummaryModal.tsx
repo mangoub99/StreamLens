@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -12,6 +12,7 @@ import { Movie } from 'src/core/services/movie.service';
 import { TvShow } from 'src/core/services/tv.service';
 import NoPoster from 'src/assets/images/no-movie.png';
 import { Box } from '@mui/material';
+import AppContext from 'src/core/context/global/AppContext';
 
 interface SummaryModalProps {
   // You can add props here if needed
@@ -22,6 +23,15 @@ interface SummaryModalProps {
 
 const SummaryModal = (props: SummaryModalProps) => {
   const { open, item, onClose } = props;
+  const { popularMovies, popularTVShows } = useContext(AppContext);
+  useEffect(() => {
+    if (open) {
+      console.log('Modal opened for item:', item);
+      console.log('Popular Movies from Context:', popularMovies);
+      console.log('Popular TV Shows from Context:', popularTVShows);
+    }
+    // You can perform side effects here if needed
+  }, [open]);
   return (
     <Dialog onClose={onClose} open={open}>
       <DialogTitle sx={{ m: 0, p: 2, textAlign: 'center' }}>

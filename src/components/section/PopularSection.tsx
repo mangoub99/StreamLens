@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography, useTheme, useMediaQuery } from '@mui/material';
 import React from 'react';
 import { TvShow } from 'src/core/services/tv.service';
 import { Movie } from 'src/core/services/movie.service';
@@ -12,8 +12,14 @@ interface PopularTVSectionProps {
 
 const PopularSection = ({ data, title, onItemClick }: PopularTVSectionProps) => {
   const theme = useTheme();
+  // Responsive animation duration
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  let animationDuration = '35s';
+  if (isMobile) animationDuration = '10s';
+  else if (isTablet) animationDuration = '25s';
   // Duplicate the array so CSS animation can scroll infinitely
-  const scrollingData = [...data, ...data];
+  const scrollingData = [...data, ...data, ...data];
 
   return (
     <Box
@@ -55,7 +61,7 @@ const PopularSection = ({ data, title, onItemClick }: PopularTVSectionProps) => 
             flexDirection: 'row',
 
             /* 🔥 Animation config */
-            animation: 'scroll-left 35s linear infinite',
+            animation: `scroll-left ${animationDuration} linear infinite`,
 
             /* Card spacing */
             '& > *': { mr: 2 },
