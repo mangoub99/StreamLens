@@ -11,7 +11,7 @@ import SummaryModal from './components/modal/SummaryModal';
 const App = () => {
   const [tvData, setTvData] = useState<any>();
   const [movieData, setMovieData] = useState<any>();
-  const [isSummaryModalOpen, setIsSummaryModalOpen] = useState(true);
+  const [isSummaryModalOpen, setIsSummaryModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<(TvShow & Movie) | null>(null);
 
   const onItemClick = (item: TvShow & Movie) => {
