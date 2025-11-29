@@ -5,12 +5,13 @@ import { Movie } from 'src/core/services/movie.service';
 
 interface PopularCardProps {
   item: TvShow & Movie;
+  onClick?: (item: TvShow & Movie) => void;
 }
 
-const TvCard = (props: PopularCardProps) => {
-  const { item } = props;
+const PopularCard = (props: PopularCardProps) => {
+  const { item, onClick } = props;
   return (
-    <Box key={item.id} sx={{ width: 200, margin: theme => theme.spacing(2) }}>
+    <Box key={item.id} sx={{ width: 200, margin: theme => theme.spacing(2), cursor: 'pointer' }} onClick={() => onClick?.(item)}>
       <img
         style={{ borderRadius: 10, marginBottom: 8 }}
         width={200}
@@ -24,4 +25,4 @@ const TvCard = (props: PopularCardProps) => {
   );
 };
 
-export default TvCard;
+export default PopularCard;

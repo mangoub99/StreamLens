@@ -3,13 +3,22 @@ import { useEffect, useState } from 'react';
 import HeroSection from './components/section/HeroSection';
 import SectionHeader from './components/section/SectionHeader';
 import NavBar from './components/navbar/Navbar';
-import { movieService } from './core/services/movie.service';
-import { tvService } from './core/services/tv.service';
+import { Movie, movieService } from './core/services/movie.service';
+import { tvService, TvShow } from './core/services/tv.service';
 import PopularSection from './components/section/PopularSection';
+import SummaryModal from './components/modal/SummaryModal';
 
 const App = () => {
   const [tvData, setTvData] = useState<any>();
   const [movieData, setMovieData] = useState<any>();
+  const [isSummaryModalOpen, setIsSummaryModalOpen] = useState(true);
+  const [selectedItem, setSelectedItem] = useState<(TvShow & Movie) | null>(null);
+
+  const onItemClick = (item: TvShow & Movie) => {
+    console.log('item clicked:', item);
+    setSelectedItem(item);
+    setIsSummaryModalOpen(true);
+  };
   const fetchData = async () => {
     const movieResponse = await movieService.getPopularMovie(1);
     // console.log('Movie Response:', movieResponse);
@@ -24,14 +33,11 @@ const App = () => {
 
   return (
     <>
+      <SummaryModal open={isSummaryModalOpen} item={selectedItem ?? undefined} onClose={() => setIsSummaryModalOpen(false)} />
       <NavBar />
       <HeroSection />
-      <SectionHeader
-        title='Latest Releases and Trending Shows'
-        subtitle='Discover the most compelling stories from around the world, handpicked for your entertainment.'
-      />
-      <PopularSection title='Popular TV Shows' data={tvData?.results ?? []} />
-      <PopularSection title='Popular Movies' data={movieData?.results ?? []} />
+      <PopularSection title='Popular TV Shows' data={tvData?.results ?? []} onItemClick={onItemClick} />
+      <PopularSection title='Popular Movies' data={movieData?.results ?? []} onItemClick={onItemClick} />
     </>
   );
 };

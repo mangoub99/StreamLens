@@ -11,9 +11,9 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#3B4CCA', // Muted Royal Blue
-      light: '#5C66E0',
-      dark: '#2F3EA8',
+      main: '#5A431C', // Muted Royal Blue
+      light: '#5A431C',
+      dark: '#5A431C',
       contrastText: '#ffffff',
     },
     // background: {
@@ -210,6 +210,16 @@ const theme = createTheme({
         root: {
           paddingTop: '2rem',
           paddingBottom: '2rem',
+        },
+      },
+    },
+
+    // 🗒 Dialog
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          borderRadius: 10,
+          backgroundColor: colors.secondary.main,
         },
       },
     },

@@ -12,9 +12,9 @@ const colors = {
     contrastText: '#ffffff',
   },
   secondary: {
-    main: '#3B4CCA', // Muted Royal Blue
-    light: '#5C66E0',
-    dark: '#2F3EA8',
+    main: '#5A431C',
+    light: '#5A431C',
+    dark: '#5A431C',
     contrastText: '#ffffff',
   },
   background: {
