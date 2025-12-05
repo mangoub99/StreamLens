@@ -30,20 +30,6 @@ export default function AppReducer(state: any, action: any) {
         user: action.payload,
       };
 
-    case 'SET_POPULAR_MOVIES':
-      localStorage.setItem('_popularMovies', JSON.stringify({ ...state.popularMovies, ...action.payload }));
-      return {
-        ...state,
-        popularMovies: action.payload,
-      };
-
-    case 'SET_POPULAR_TV_SHOWS':
-      localStorage.setItem('_popularTVShows', JSON.stringify({ ...state.popularTVShows, ...action.payload }));
-      return {
-        ...state,
-        popularTVShows: action.payload,
-      };
-
     case 'SET_ALERT_DIALOG_PROPS':
       return {
         ...state,

@@ -12,14 +12,10 @@ import { TvShow } from 'src/core/services/tv.service';
 const initialState: AppContextType = {
   themeMode: JSON.parse(sessionStorage.getItem('_themeMode') ?? '{}'),
   user: JSON.parse(sessionStorage.getItem('_user') ?? '{}'),
-  popularMovies: JSON.parse(sessionStorage.getItem('_popularMovies') ?? '[]'),
-  popularTVShows: JSON.parse(sessionStorage.getItem('_popularTVShows') ?? '[]'),
   alertDialogProps: new AlertDialogProps(),
   snackBarProps: new SnackBarProps(),
   setThemeMode: () => {},
   setUser: () => {},
-  setPopularMovies: () => {},
-  setPopularTVShows: () => {},
   setAlertDialogProps: () => {},
   setSnackBarProps: () => {},
   clearSession: () => {},
@@ -48,20 +44,6 @@ export const AppContextProvider = ({ children }: any) => {
     });
   };
 
-  const setPopularMovies = (movies: Movie[]) => {
-    dispatch({
-      type: 'SET_POPULAR_MOVIES',
-      payload: movies,
-    });
-  };
-
-  const setPopularTVShows = (tvShows: TvShow[]) => {
-    dispatch({
-      type: 'SET_POPULAR_TV_SHOWS',
-      payload: tvShows,
-    });
-  };
-
   const setAlertDialogProps = (dialog?: AlertDialogProps) => {
     dispatch({
       type: 'SET_ALERT_DIALOG_PROPS',
@@ -80,30 +62,22 @@ export const AppContextProvider = ({ children }: any) => {
     () => ({
       themeMode: state.themeMode,
       user: state.user,
-      popularMovies: state.popularMovies,
-      popularTVShows: state.popularTVShows,
       alertDialogProps: state.alertDialogProps,
       snackBarProps: state.snackBarProps,
       clearSession,
       setThemeMode,
       setUser,
-      setPopularMovies,
-      setPopularTVShows,
       setAlertDialogProps,
       setSnackBarProps,
     }),
     [
       state.themeMode,
       state.user,
-      state.popularMovies,
-      state.popularTVShows,
       state.alertDialogProps,
       state.snackBarProps,
       clearSession,
       setThemeMode,
       setUser,
-      setPopularMovies,
-      setPopularTVShows,
       setAlertDialogProps,
       setSnackBarProps,
     ],
