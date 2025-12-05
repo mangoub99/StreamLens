@@ -1,16 +1,17 @@
-import { Box, Typography, useTheme, useMediaQuery } from '@mui/material';
+import { Box, Typography, useTheme, useMediaQuery, CircularProgress } from '@mui/material';
 import React from 'react';
 import { TvShow } from 'src/core/services/tv.service';
 import { Movie } from 'src/core/services/movie.service';
 import PopularCard from '../card/PopularCard';
 
 interface PopularTVSectionProps {
+  loading?: boolean;
   title: string;
   data: (TvShow & Movie)[];
   onItemClick?: (item: TvShow & Movie) => void;
 }
 
-const PopularSection = ({ data, title, onItemClick }: PopularTVSectionProps) => {
+const PopularSection = ({ loading, data, title, onItemClick }: PopularTVSectionProps) => {
   const theme = useTheme();
   // Responsive animation duration
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -21,7 +22,7 @@ const PopularSection = ({ data, title, onItemClick }: PopularTVSectionProps) => 
   // Duplicate the array so CSS animation can scroll infinitely
   const scrollingData = [...data, ...data, ...data];
 
-  return (
+  return loading ? loadingComponent() : (
     <Box
       sx={{
         display: 'flex',
@@ -88,3 +89,9 @@ const PopularSection = ({ data, title, onItemClick }: PopularTVSectionProps) => 
 };
 
 export default PopularSection;
+
+const loadingComponent = () => (
+  <Box sx={{ width: '100%', minHeight: '50vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <CircularProgress color='primary' />
+  </Box>
+);
