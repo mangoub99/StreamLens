@@ -1,43 +1,59 @@
 import './App.css';
-import { useContext, useEffect, useState } from 'react';
-import HeroSection from './components/section/HeroSection';
-import SectionHeader from './components/section/SectionHeader';
-import NavBar from './components/navbar/Navbar';
-import { Movie, movieService } from './core/services/movie.service';
-import { tvService, TvShow } from './core/services/tv.service';
-import PopularSection from './components/section/PopularSection';
-import SummaryModal from './components/modal/SummaryModal';
+import { useContext } from 'react';
+import { BrowserRouter } from 'react-router';
+import AppRoutes from './Routes';
+import { CssBaseline } from '@mui/material';
 import AppContext from './core/context/global/AppContext';
+import SnackbarComponent from './components/snackBar/SnackBar.component';
+import { AlertDialogProps } from './core/models/alertDialog.model';
+import AlertDialog from './components/dialogs/AlertDialog.component';
 
 const App = () => {
-  const { popularMovies, popularTVShows, setPopularMovies, setPopularTVShows } = useContext(AppContext);
-  const [isSummaryModalOpen, setIsSummaryModalOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<(TvShow & Movie) | null>(null);
+  const { alertDialogProps, snackBarProps, setAlertDialogProps, setSnackBarProps } = useContext(AppContext);
 
-  const onItemClick = (item: TvShow & Movie) => {
-    console.log('item clicked:', item);
-    setSelectedItem(item);
-    setIsSummaryModalOpen(true);
+  const closeSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    setSnackBarProps();
   };
-  const fetchData = async () => {
-    const movieResponse = await movieService.getPopularMovie(1);
-    // console.log('Movie Response:', movieResponse);
-    setPopularMovies(movieResponse?.results ?? []);
-    const tvResponse = await tvService.getPopularTV(1);
-    setPopularTVShows(tvResponse?.results ?? []);
-    // console.log('TV Response:', tvResponse);
+
+  const handleCloseAlertDialog = async () => {
+    if (alertDialogProps.onClose) {
+      await alertDialogProps.onClose();
+    }
+    setAlertDialogProps(new AlertDialogProps());
   };
-  useEffect(() => {
-    if (!popularMovies.length || !popularTVShows.length) fetchData();
-  }, []);
+  const handleConfirmAlertDialog = async () => {
+    await alertDialogProps.onConfirm();
+    setAlertDialogProps(new AlertDialogProps());
+  };
 
   return (
     <>
-      <SummaryModal open={isSummaryModalOpen} item={selectedItem ?? undefined} onClose={() => setIsSummaryModalOpen(false)} />
-      <NavBar />
-      <HeroSection />
-      <PopularSection title='Popular TV Shows' data={popularTVShows} onItemClick={onItemClick} />
-      <PopularSection title='Popular Movies' data={popularMovies} onItemClick={onItemClick} />
+      {snackBarProps && snackBarProps.open && (
+        <SnackbarComponent
+          autoHideDuration={snackBarProps?.autoHideDuration}
+          open={snackBarProps.open}
+          severity={snackBarProps.severity}
+          message={snackBarProps.message}
+          onClose={closeSnackbar}
+        />
+      )}
+      {alertDialogProps?.open && (
+        <AlertDialog
+          loadingAnimation={alertDialogProps.loadingAnimation}
+          open={alertDialogProps.open}
+          title={alertDialogProps.title}
+          content={alertDialogProps.content}
+          onClose={handleCloseAlertDialog}
+          onConfirm={handleConfirmAlertDialog}
+          closeLabel={alertDialogProps.closeLabel}
+          confirmLabel={alertDialogProps.confirmLabel}
+          showCancelButton={alertDialogProps.showCancelButton}
+        />
+      )}
+      <CssBaseline />
+      <BrowserRouter basename='/StreamLens/'>
+        <AppRoutes />
+      </BrowserRouter>
     </>
   );
 };

@@ -7,7 +7,7 @@ export class AlertDialogProps {
   confirmLabel?: string;
   showCancelButton?: boolean;
 
-  onConfirm?: () => Promise<boolean | undefined> | boolean;
+  onConfirm: () => Promise<boolean | undefined> | boolean;
   onClose?: () => void;
 
   constructor(state?: AlertDialogProps | any) {

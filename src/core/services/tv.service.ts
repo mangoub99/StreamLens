@@ -1,6 +1,7 @@
 // src/core/services/tv.service.ts
 
 import { ApiService } from './api.service';
+import { Movie } from './movie.service';
 
 /**
  * Basic TMDB v3 TV result shapes.
@@ -25,7 +26,7 @@ export type TvShow = {
 
 export type TvListResponse = {
   page: number;
-  results: TvShow[];
+  results: (TvShow & Movie)[];
   total_pages: number;
   total_results: number;
 };

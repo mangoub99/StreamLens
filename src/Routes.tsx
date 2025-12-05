@@ -9,8 +9,7 @@ const LoadingPage = React.lazy(() => import('./pages/LoadingPage.page'));
 const AppRoutes: React.FC = () => (
   <React.Suspense fallback={<LoadingPage />}>
     <Routes>
-      <Route path={RoutePaths.Default} element={<App />} />
-      <Route path={RoutePaths.HOME} element={<Home />} />
+      <Route path={RoutePaths.Default} element={<Home />} />
       <Route path={RoutePaths.ABOUT} element={<About />} />
     </Routes>
   </React.Suspense>
